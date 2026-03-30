@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
+const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost/simple-mern';
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/simple-mern', { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 module.exports = mongoose;
