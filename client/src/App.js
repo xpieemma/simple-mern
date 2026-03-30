@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import './App.css';
+import { API_BASE_URL } from './config';
 
 import TasksList from './components/TaskList';
 
@@ -8,7 +9,7 @@ const App = () => {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   const getTasks = useCallback(() => {
-    fetch('/api/tasks')
+    fetch(`${API_BASE_URL}/api/tasks`)
       .then(res => res.json())
       .then(setTasks);
   });
@@ -20,7 +21,7 @@ const App = () => {
   const clickAddTask = event => {
     event.preventDefault();
 
-    fetch('/api/tasks/add', {
+    fetch(`${API_BASE_URL}/api/tasks/add`, {
       method: 'post',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ title: newTaskTitle }),
